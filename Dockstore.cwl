@@ -3,6 +3,8 @@
 class: CommandLineTool
 
 description: |
+  Bippity Boppity Boo
+
   Computes a series of quality control metrics for RNA-seq data.
 
   Usage:
