@@ -243,7 +243,7 @@ inputs:
 
   - id: "#ttype"
     type: [ "null", integer ] 
-    description: "The column in GTF to use to look for rRNA transcript type. Mainly used for running on Ensembl GTF (specify "-ttype 2"). Otherwise, for spec-conforming GTF files, disregard."
+    description: "The column in GTF to use to look for rRNA transcript type. Mainly used for running on Ensembl GTF (specify \"-ttype 2\"). Otherwise, for spec-conforming GTF files, disregard."
     inputBinding:
       position: 8
       prefix: "-ttype"
@@ -271,7 +271,7 @@ inputs:
 
   - id: "#gatkFlags"
     type: [ "null", string ] 
-    description: "Pass a string of quotes directly to the GATK (e.g. -gatkFlags "-DBQ 0" to set missing base qualities to zero)."
+    description: "Pass a string of quotes directly to the GATK (e.g. -gatkFlags \"-DBQ 0\" to set missing base qualities to zero)."
     inputBinding:
       position: 8
       prefix: "-gatkFlags"
