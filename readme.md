@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/CancerCollaboratory/dockstore-tool-rnaseqc.svg)](https://travis-ci.org/CancerCollaboratory/dockstore-tool-rnaseqc)
-[![Docker Repository on Quay](https://quay.io/repository/collaboratory/dockstore-tool-rnaseqc/status "Docker Repository on Quay")](https://quay.io/repository/collaboratory/dockstore-tool-rnaseqc)
+[![Docker Repository on Quay](https://quay.io/repository/cancercollaboratory/dockstore-tool-rnaseqc/status "Docker Repository on Quay")](https://quay.io/repository/cancercollaboratory/dockstore-tool-rnaseqc)
 
 This tool has been validated as a CWL draft-3 and v1.0 CommandLineTool. 
 
