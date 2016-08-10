@@ -1,0 +1,20 @@
+{
+  "out": "testReport/metrics.tsv",
+  "n": 1,
+  "noDoC": true,
+  "s": "TestId|datatest.bam|TestDesc",
+  "t": {
+    "path": "datatest.gtf",
+    "class": "File"
+  },
+  "r": {
+    "path": "datatest.fa",
+    "class": "File"
+  },
+  "gc": {
+    "path": "gencode.v7.gc.txt",
+    "class": "File"
+  },
+  "strat" : "gc",
+  "o": "./testReport/" 
+}

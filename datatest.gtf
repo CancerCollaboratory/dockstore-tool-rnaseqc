@@ -1,0 +1,6 @@
+##description: evidence-based annotation of the human genome (GRCh37), version 7 (Ensembl 62)
+##provider: GENCODE
+##contact: gencode@sanger.ac.uk
+##format: gtf
+##date: 2011-03-23
+ref1	HAVANA	gene	11869	14409	.	+	.	gene_id "ENSG00000223972.3"; transcript_id "ENSG00000223972.3"; gene_type "pseudogene"; gene_status "KNOWN"; gene_name "DDX11L1"; transcript_type "pseudogene"; transcript_status "KNOWN"; transcript_name "DDX11L1"; level 2; havana_gene "OTTHUMG00000000961.2";

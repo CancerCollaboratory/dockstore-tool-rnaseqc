@@ -86,10 +86,11 @@ dct:creator:
   foaf:name: Andy Yang
   foaf:mbox: "mailto:ayang@oicr.on.ca"
 
+cwlVersion: draft-3
+
 requirements:
   - class: DockerRequirement
     dockerPull: "quay.io/cancercollaboratory/dockstore-tool-rnaseqc"
-  - { import: node-engine.cwl }
 
 inputs:
   - id: "#bwa"
@@ -136,59 +137,51 @@ inputs:
 
   - id: "#gc"
     type: [ "null", File ]
-    description: "File of transcript id <tab> gc content. Used for stratification."
+    description: "File of transcript id <tab> gc content. Used for sstratification."
     inputBinding:
       position: 7
       prefix: "-gc"
 
   - id: "#n"
-    type: [ "null", integer ]
+    type: [ "null", int ]
     description: "Number of top transcripts to use. Default is 1000."
     inputBinding:
       position: 8
       prefix: "-n"
 
-  - id: "#noDoCa"
-    type: [ "null", integer ]
+  - id: "#noDoC"
+    type: [ "null", boolean ]
     description: "Suppresses GATK Depth of Coverage calculations."
     inputBinding:
       position: 8
-      prefix: "-noDoCa"
+      prefix: "-noDoC"
 
   - id: "#noReadCounting"
-    type: [ "null", integer ]
-    description: "Suppresses read count-based metrics."
-    inputBinding:
-      position: 8
-      prefix: "--noReadCounting"
-
-  - id: "#noReadCounting"
-    type: [ "null", integer ]
-    description: "Suppresses read count-based metrics."
-    inputBinding:
-      position: 8
-      prefix: "--noReadCounting"
-
-  - id: "#noReadCounting"
-    type: [ "null", integer ]
+    type: [ "null", int ]
     description: "Suppresses read count-based metrics."
     inputBinding:
       position: 8
       prefix: "--noReadCounting"
 
   - id: "#o"
-    type: string
+    type: [ "null", string ]
     description: "Output directory (will be created if doesn't exist)."
     inputBinding:
       position: 8
       prefix: "-o"
 
   - id: "#r"
-    type: string 
+    type: File 
     description: "Reference Genome in fasta format."
     inputBinding:
       position: 8
       prefix: "-r"
+    secondaryFiles:
+      - ".fai"
+      - "^.dict"
+      - "^.bam"
+      - "^.bam.bai"
+
 
   - id: "#rRNA"
     type: [ "null", File ]
@@ -198,21 +191,21 @@ inputs:
       prefix: "-rRNA"
 
   - id: "#s"
-    type: File
+    type: string 
     description: "Sample File: tab-delimited description of samples and their bams"
     inputBinding:
       position: 8
       prefix: "-s"
 
   - id: "#singleEnd"
-    type: File
+    type: [ "null", File ]
     description: "This BAM contains single end reads."
     inputBinding:
       position: 8
       prefix: "-singleEnd"
 
   - id: "#strat"
-    type: [ "gc", string ] 
+    type: [ "null", string ] 
     description: "Stratification options: current supported option is 'gc'"
     inputBinding:
       position: 8
@@ -240,14 +233,14 @@ inputs:
       prefix: "-transcriptDetails"
 
   - id: "#ttype"
-    type: [ "null", integer ] 
+    type: [ "null", int ] 
     description: "The column in GTF to use to look for rRNA transcript type. Mainly used for running on Ensembl GTF (specify \"-ttype 2\"). Otherwise, for spec-conforming GTF files, disregard."
     inputBinding:
       position: 8
       prefix: "-ttype"
 
   - id: "#rRNAdSampleTarget"
-    type: [ "null", integer ] 
+    type: [ "null", int ] 
     description: "Downsamples to calculate rRNA rate more efficiently. Default is 1 million. Set to 0 to disable."
     inputBinding:
       position: 8
@@ -261,7 +254,7 @@ inputs:
       prefix: "-gcMargin"
 
   - id: "#gld"
-    type: "null" 
+    type: [ "null", boolean ]
     description: "Gap Length Distribution: if flag is present, the distribution of gap lengths will be plotted."
     inputBinding:
       position: 8
@@ -273,14 +266,15 @@ inputs:
     inputBinding:
       position: 8
       prefix: "-gatkFlags"
+ 
+  - id: "#out"
+    type: string
 
 outputs:
   - id: "#out"
     type: File
+    outputBinding: 
+      glob: $(inputs.out)
     description: "Required output sam or bam file"
-    outputBinding:
-      glob:
-        engine: cwl:JsonPointer
-        script: /job/output1
 
 baseCommand: ["wrapper.sh"]
