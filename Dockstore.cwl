@@ -9,7 +9,7 @@ cwlVersion: v1.0
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/cancercollaboratory/dockstore-tool-rnaseqc
+  dockerPull: quay.io/cancercollaboratory/dockstore-tool-rnaseqc:1.0
 inputs:
   rRNA:
     type: File?
